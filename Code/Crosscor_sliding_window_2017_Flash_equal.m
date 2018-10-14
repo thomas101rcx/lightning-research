@@ -11,11 +11,11 @@ XgridlimitLower =  -10;   %Km
 YgridlimitUpper =   20;   %Km
 YgridlimitLower =  -20;   %Km
 Zgridlimit =        20;   %Km
-xyGridsize   =     0.1;   %Km
-zGridsize =        0.1;   %Km
-xgridsize = length(XgridlimitLower:xyGridsize:XgridlimitUpper);
-ygridsize = length(YgridlimitLower:xyGridsize:YgridlimitUpper);
-zgridsize = length(0:zGridsize:Zgridlimit);
+xyGridstep   =     0.1;   %Km
+zGridstep =        0.1;   %Km
+xgridsize = length(XgridlimitLower:xyGridstep:XgridlimitUpper);
+ygridsize = length(YgridlimitLower:xyGridstep:YgridlimitUpper);
+zgridsize = length(0:zGridstep:Zgridlimit);
 timegridsize = xgridsize*ygridsize*zgridsize;
 
 
@@ -57,7 +57,7 @@ for i = 1:1:NumStation-1
 end
 
 
-%% Calculate time difference with repsect to each grid
+%% Creat the grid and calculate time difference with repsect to each grid from different sensor stations 
 
 Dukex = 0;
 Dukey = 0;
@@ -147,7 +147,7 @@ slidewindow = 100; %us
 overlap = 25;  %us
 Resultx = zeros(int32((globalend - globalstart) / overlap - 1), 1,'single');
 Resulty = zeros(int32((globalend - globalstart) / overlap - 1), 1,'single');
-
+Resultz = zeros(int32((globalend - globalstart) / overlap - 1), 1,'single');
 Abstime = zeros((globalend - globalstart) / overlap - 1, 1,'single');
 Image_maxoverstdxyz = zeros(int32((globalend - globalstart) / overlap - 1), 1,'single');
 Image_max = zeros(int32((globalend - globalstart) / overlap - 1), 1,'single');
@@ -176,7 +176,7 @@ Max_PS3_index_matrix = zeros(int32((globalend - globalstart) / overlap - 1), 1,'
 Min_PS3_index_matrix = zeros(int32((globalend - globalstart) / overlap - 1), 1,'single');
 
 
-%% Load data , Duke as base signal , the other three extra 200 data points extra to accomdate for shifting
+%% Load data , Duke as base signal , 
 %% Interpolate the data with 10 times time precision and High Pass filter it
 
 sig_Duke_BGE_unfiltered = sm1.Duke_BGE';

@@ -45,7 +45,6 @@ Error_bar = 0.1;
 Image_SNR_bar = 11 ;
 
 
-% 
 % Resultx = Resultx (Error < Error_bar & Image_SNR > Image_SNR_bar);
 % Resulty = Resulty (Error < Error_bar & Image_SNR > Image_SNR_bar);
 % Resultz = Resultz (Error < Error_bar & Image_SNR > Image_SNR_bar);
